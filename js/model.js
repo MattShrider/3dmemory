@@ -8,21 +8,23 @@
 * @namespace model
 */
 var model = {
-   /** How large the pages are in bytes */
+   /** How large the pages are in bytes (Default: 512)*/
    pagesize: 512,
    /** The list of processes in the model */
    procs: [],
    /** An object representing physical memory */
    memory: {
+      /** The size of physicsl memory */
       size: 4*1024,
+      /** A container for the frames in memory */
       frames: []
    },
    /**
     * @method addProc
     * Adds a process to the Process list
-    * @param {int} id The id of the process.
-    * @param {int} text The amount of bytes in the text segment.
-    * @param {int} data The amount of bytes in the data segment.
+    * @param {Number} id The id of the process.
+    * @param {Number} text The amount of bytes in the text segment.
+    * @param {Number} data The amount of bytes in the data segment.
     * @memberof model
     */
    addProc: function(id, text, data){
@@ -31,7 +33,7 @@ var model = {
    /**
     * @method removeProc
     * Removes a process from the process list
-    * @param {int} id Which process id should be removed from the list.
+    * @param {Number} id Which process id should be removed from the list.
     * @memberof model
     */
    removeProc: function(id){
@@ -46,9 +48,9 @@ var model = {
 /** 
  * Represents a process in the simulation.
  * @constructor
- * @param {int} id The process id.
- * @param {int} text The size of the process text in bytes.
- * @param {int} data The size of the process data in bytes.
+ * @param {Number} id The process id.
+ * @param {Number} text The size of the process text in bytes.
+ * @param {Number} data The size of the process data in bytes.
  */
 model.Proc = function(id, text, data){
    /** The id of the process. */
@@ -90,7 +92,10 @@ model.Proc = function(id, text, data){
 /**
  * @method equals
  * A process is equal to another one if the id matches.
- * @memberof model.Proc#
+ * @param {Number} id The id to compare to this process id.
+ * @returns {Boolean} this id == that id.
+ * @instance
+ * @memberof model.Proc
  */
 model.Proc.prototype.equals = function(id){
    return this.id === id;
@@ -100,7 +105,7 @@ model.Proc.prototype.equals = function(id){
  * Represents a page in logical memory.
  * @constructor
  * @param {String} type Either 'text' or 'data' page.
- * @param {int} size The size of the page, upto {@link model.pagesize}.
+ * @param {Number} size The size of the page, upto {@link model.pagesize}.
  */
 model.Page = function(type, size){
    this.type = type;
@@ -110,9 +115,9 @@ model.Page = function(type, size){
 /**
  * Represents a frame in physical memory.
  * @constructor
- * @param {int} pid The id of the process which "owns" the frame.
+ * @param {Number} pid The id of the process which "owns" the frame.
  * @param {String} type Either 'text' or 'data' frame.
- * @param {int} page Which page in logical memory the frame represents.
+ * @param {Number} page Which page in logical memory the frame represents.
  */
 model.Frame = function(pid, type, page){
    this.pid = pid;
