@@ -8,14 +8,22 @@
 * @namespace model
 */
 var model = {
+   /** constant for a ready process */
+   READY: 0,
+   /** constant for a sleeping process */
+   SLEEP: 1,
    /** How large the pages are in bytes (Default: 512)*/
    pagesize: 512,
    /** The list of processes in the model */
    procs: [],
+   /** A queue of all free frames **/
+   freeFrames: [],
    /** An object representing physical memory */
    memory: {
-      /** The size of physicsl memory */
+      /** The size of physical memory */
       size: 4*1024,
+      /** Amount of frames in memory */
+      amount: 4*1024 / 512,
       /** A container for the frames in memory */
       frames: []
    },
@@ -45,6 +53,11 @@ var model = {
    }
 };
 
+/** Initialize the free frames */
+for (var i=0; i < model.memory.amount; ++i){
+   model.freeFrames[i] = i;
+}
+
 /** 
  * Represents a process in the simulation.
  * @constructor
@@ -56,36 +69,38 @@ model.Proc = function(id, text, data){
    /** The id of the process. */
    this.id = id;
    /** How many bytes of text are in the process. */
-   var textsize = text;
+   this.textsize = text;
    /** How many bytes of data are in the process. */
-   var datasize = data;
+   this.datasize = data;
    /** The total amount of bytes for the process. */
-   var pagesize = model.pagesize;
+   this.pagesize = model.pagesize;
    /** The amount of data pages in the process. */
-   var datapages = Math.ceil(datasize/pagesize);
+   this.datapages = Math.ceil(this.datasize/this.pagesize);
    /** The amount of text pages in the process. */
-   var textpages = Math.ceil(textsize/pagesize);
+   this.textpages = Math.ceil(this.textsize/this.pagesize);
    /** Array which represents the page table of the proc. */
-   var pageTable = [];
+   this.pageTable = [];
+   /** A status flag for if the process is ready or waiting */
+   this.status = model.READY;
 
    /* Creates the text pages for the process */
-   for(var i=0, counter = textsize; counter > 0; i++){
-      if (counter > pagesize){
-         pageTable[i] = new this.Page('text', pagesize);
+   for(var i=0, counter = this.textsize; counter > 0; i++){
+      if (counter > this.pagesize){
+         this.pageTable[i] = new model.Page('text', this.pagesize);
       } else {
-         pageTable[i] = new this.Page('text', counter);
+         this.pageTable[i] = new model.Page('text', counter);
       }
-      counter -= pagesize;
+      counter -= this.pagesize;
    }
 
    /* Creates the data pages for the process */
-   for(i=pageTable.length, counter = datasize; counter > 0; i++){
-      if (counter > pagesize){
-         pageTable[i] = new this.Page('data', pagesize);
+   for(i=this.pageTable.length, counter = this.datasize; counter > 0; i++){
+      if (counter > this.pagesize){
+         this.pageTable[i] = new model.Page('data', this.pagesize);
       } else {
-         pageTable[i] = new this.Page('data', counter);
+         this.pageTable[i] = new model.Page('data', counter);
       }
-      counter -= pagesize;
+      counter -= this.pagesize;
    }
 };
 
@@ -100,6 +115,7 @@ model.Proc = function(id, text, data){
 model.Proc.prototype.equals = function(id){
    return this.id === id;
 };
+
 
 /**
  * Represents a page in logical memory.
