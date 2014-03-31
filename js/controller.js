@@ -14,10 +14,42 @@ var controller = {
    /**
     * @method loadFile
     * Reads the contents of a track tape into the simulation.
-    * @param {String} path The path of the file (from an event).
+    * @param {Event} evt The event object of a fileinput object.
+    * @event
     * @memberof controller
     */
-   loadFile: function(id, text, data){
-      this.procs[this.procs.length] = new this.Proc(id, text, data);
+   loadFile: function(evt){
+      if (!window.FileReader || !window.File || !window.FileList){
+         alert("You don't have access to the FileReader object.  " +
+               "Thus you will not be able to open text files.  " +
+               "Please upgrade your browser for HTML5!");
+      } else {
+         var files = evt.target.files;
+         if (files){
+            for (var i=0, f; (f=files[i]); i++){
+               var r = new FileReader();
+               r.onload = (function(f) {
+                  return function(e){
+                     var content = e.target.result;
+                     console.log(e);
+                     console.log(content);
+                     //TODO - do something with the content here
+                     $('#output').append("<p>Read filename: " + f.name + "</p>");
+                     $('#output').append("<div id='" + f.name +"'><p>" + content + "</p></div>");
+                  };
+               })(f);
+
+               r.readAsText(f);
+            }
+         }
+
+      }
    },
+
+
 };
+
+/* Add the file handler to the input element */
+$(function() {
+   $('#files').on('change', controller.loadFile);
+});
