@@ -12,6 +12,8 @@ var model = {
    READY: 0,
    /** constant for a sleeping process */
    SLEEP: 1,
+   /** constant for a dead process */
+   DEAD: 2,
    /** How large the pages are in bytes (Default: 512)*/
    pagesize: 512,
    /** The list of processes in the model */
@@ -47,7 +49,8 @@ var model = {
    removeProc: function(id){
       for (var i=0; i < this.procs.length; ++i){
          if(this.procs[i].equals(id)){
-            this.procs.splice(i,1);
+            var p = this.procs.splice(i,1);
+            p.status = model.DEAD;
          }
       }
    }
@@ -131,12 +134,10 @@ model.Page = function(type, size){
 /**
  * Represents a frame in physical memory.
  * @constructor
- * @param {Number} pid The id of the process which "owns" the frame.
- * @param {String} type Either 'text' or 'data' frame.
- * @param {Number} page Which page in logical memory the frame represents.
+ * @param {Proc} proc The process which is filling the frame.
+ * @param {Page} page Which page in logical memory the frame represents.
  */
-model.Frame = function(pid, type, page){
-   this.pid = pid;
-   this.type = type;
+model.Frame = function(proc, page){
+   this.proc = proc;
    this.page = page;
 };
