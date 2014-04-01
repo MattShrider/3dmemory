@@ -1,3 +1,4 @@
+/* global model:false */
 /** 
  * @file js/controller.js This is the "controller" of the model.  This file will
  *    start and stop the simulation, as well as create/remove pages and procs,
@@ -11,6 +12,11 @@
  * @namespace controller
  */
 var controller = {
+   /** How many files have been loaded into the program */
+   filesRead: 0,
+   /** A queue of events which represent the entire simulation */
+   simulationQueue: [],
+   /* TODO - create "sim" objects which can be used to create/remove from the simulation in order */
    /**
     * @method loadFile
     * Reads the contents of a track tape into the simulation.
@@ -31,11 +37,7 @@ var controller = {
                r.onload = (function(f) {
                   return function(e){
                      var content = e.target.result;
-                     console.log(e);
-                     console.log(content);
-                     //TODO - do something with the content here
-                     $('#output').append("<p>Read filename: " + f.name + "</p>");
-                     $('#output').append("<div id='" + f.name +"'><p>" + content + "</p></div>");
+                     controller.parseFile(content);
                   };
                })(f);
 
@@ -43,6 +45,48 @@ var controller = {
             }
          }
 
+      }
+   },
+
+   /**
+    * @method parseFile
+    * Takes the content of a track tape and converts it into objects in the model.
+    *    This function uses a regex to test for patterns in the input.
+    * @param {String} str The contents of a loaded file.
+    * @memberof controller
+    */
+   parseFile: function(str){
+      var lines = str.split("\n");
+      var createRegEx = /^(\d+) (\d+) (\d+)/i;
+      var haltRegEx = /^(\d+) Halt/i;
+      var matched;
+      for (var i=0; i<lines.length; ++i){
+         /* Test our input against a create call */
+         if ((matched = lines[i].match(createRegEx)) !== null){
+            //matched[1] == pid, [2] == text, [3] == data
+            console.log(matched);
+            /* push a sim object to the queue for adding a proc */
+            controller.simulationQueue.push({
+               id: matched[1],
+               type: "add",
+               text: matched[2],
+               data: matched[3]
+            });
+         }
+         /* Test our input against a HALT call */
+         if ((matched = lines[i].match(haltRegEx)) !== null){
+            //matched[1] captures the pid
+            console.log(matched);
+            /* push a sim object to the queue for removing a proc */
+            controller.simulationQueue.push({
+               id: matched[1],
+               type: "halt",
+               text: 0,
+               data: 0
+            });
+         }
+         //TODO - interact with the view.
+         console.log(controller.simulationQueue);
       }
    },
 
