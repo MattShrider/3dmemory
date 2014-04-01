@@ -64,7 +64,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line9">line 9</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -91,6 +91,122 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="filesRead"><span class="type-signature">&lt;static> </span>filesRead<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        How many files have been loaded into the program
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="simulationQueue"><span class="type-signature">&lt;static> </span>simulationQueue<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A queue of events which represent the entire simulation
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        </dl>
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -98,9 +214,11 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="loadFile
-Reads the contents of a track tape into the simulation."><span class="type-signature">&lt;static> </span>loadFile
-Reads the contents of a track tape into the simulation.<span class="signature">(path)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="parseFile
+Takes the content of a track tape and converts it into objects in the model.
+   This function uses a regex to test for patterns in the input."><span class="type-signature">&lt;static> </span>parseFile
+Takes the content of a track tape and converts it into objects in the model.
+   This function uses a regex to test for patterns in the input.<span class="signature">(str)</span><span class="type-signature"></span></h4>
 
     
 </dt>
@@ -138,7 +256,7 @@ Reads the contents of a track tape into the simulation.<span class="signature">(
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name"><code>str</code></td>
             
 
             <td class="type">
@@ -154,7 +272,7 @@ Reads the contents of a track tape into the simulation.<span class="signature">(
 
             
 
-            <td class="description last">The path of the file (from an event).</td>
+            <td class="description last">The contents of a loaded file.</td>
         </tr>
 
     
@@ -185,7 +303,7 @@ Reads the contents of a track tape into the simulation.<span class="signature">(
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line14">line 14</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -218,6 +336,127 @@ Reads the contents of a track tape into the simulation.<span class="signature">(
     
 
     
+        <h3 class="subsection-title">Events</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="event:loadFile
+Reads the contents of a track tape into the simulation.">loadFile
+Reads the contents of a track tape into the simulation.</h4>
+
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>evt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The event object of a fileinput object.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
 </article>
 
 </section>
@@ -228,13 +467,15 @@ Reads the contents of a track tape into the simulation.<span class="signature">(
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="model.Frame.html">Frame</a></li><li><a href="model.Page.html">Page</a></li><li><a href="model.Proc.html">Proc</a></li></ul><h3>Namespaces</h3><ul><li><a href="controller.html">controller</a></li><li><a href="model.html">model</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="model.Frame.html">Frame</a></li><li><a href="model.Page.html">Page</a></li><li><a href="model.Proc.html">Proc</a></li></ul><h3>Events</h3><ul><li><a href="controller.html#event:loadFile
+Reads the contents of a track tape into the simulation.">loadFile
+Reads the contents of a track tape into the simulation.</a></li></ul><h3>Namespaces</h3><ul><li><a href="controller.html">controller</a></li><li><a href="model.html">model</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sun Mar 30 2014 21:08:58 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Mon Mar 31 2014 21:59:41 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
