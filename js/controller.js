@@ -14,9 +14,10 @@
 var controller = {
    /** How many files have been loaded into the program */
    filesRead: 0,
+   /** A counter for the current step in the simulation queue */
+   now: -1,
    /** A queue of events which represent the entire simulation */
    simulationQueue: [],
-   /* TODO - create "sim" objects which can be used to create/remove from the simulation in order */
    /**
     * @method loadFile
     * Reads the contents of a track tape into the simulation.
@@ -85,15 +86,68 @@ var controller = {
                data: 0
             });
          }
-         //TODO - interact with the view.
-         console.log(controller.simulationQueue);
       }
    },
 
+   /**
+    * @method fowards
+    * Step forwards in the simulation, executing whatever is in the simulation queue
+    * @memberof controller
+    */
+   forwards: function(){
+      /* Go fowards, then execute */
+      if (controller.now+1 < controller.simulationQueue.length){
+         controller.now++;
+         var sim = controller.simulationQueue[controller.now];
+         var p;
+         if (sim.type === "halt"){
+            console.log("HALTING ID: " + sim.id);
+            p = model.removeProc(sim.id);
+            sim.proc = p;
+            sim.text = p.textsize;
+            sim.data = p.datasize;
+
+         } else if (sim.type === "add"){
+            console.log("ADDING ID: " + sim.id);
+            p = model.addProc(sim.id, sim.text, sim.data);
+            sim.proc = p;
+         }
+      }
+      console.log(model.freeFrames);
+   },
+
+   /**
+    * @method backwards
+    * Step backwards in the simulation, undoing whatever the current step is
+    * @memberof controller
+    */
+   backwards: function(){
+      /* Undo, then go backwards */
+      if (controller.now >= 0 ){
+         var sim = controller.simulationQueue[controller.now];
+         var p;
+         if (sim.type === "halt"){
+            console.log("UNDOING A HALT ON ID: " + sim.id);
+            p = model.addProc(sim.id, sim.text, sim.data);
+            sim.proc = p;
+
+         } else if (sim.type === "add"){
+            console.log("UNDOING AN ADD ON ID: " + sim.id);
+            p = model.removeProc(sim.id);
+
+         }
+
+         controller.now--;
+      }
+
+      console.log(model.freeFrames);
+   },
 
 };
 
 /* Add the file handler to the input element */
 $(function() {
    $('#files').on('change', controller.loadFile);
+   $('#prev').on('click', controller.backwards);
+   $('#next').on('click', controller.forwards);
 });
