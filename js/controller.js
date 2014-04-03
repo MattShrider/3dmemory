@@ -18,6 +18,8 @@ var controller = {
    now: -1,
    /** A queue of events which represent the entire simulation */
    simulationQueue: [],
+   /** A flag to check if the default list has already been loaded */
+   defaultLoaded: false,
    /**
     * @method loadFile
     * Reads the contents of a track tape into the simulation.
@@ -90,6 +92,21 @@ var controller = {
    },
 
    /**
+    * @method loadDefault
+    * Reads the local testing tape into the simulation
+    * @event
+    * @memberof controller
+    */
+   loadDefault: function(){
+      if (!controller.defaultLoaded){
+         $.get("testing/input3a.data", function(data){
+            controller.parseFile(data);
+         });
+         controller.defaultLoaded = true;
+      }
+   },
+
+   /**
     * @method fowards
     * Step forwards in the simulation, executing whatever is in the simulation queue
     * @memberof controller
@@ -150,4 +167,5 @@ $(function() {
    $('#files').on('change', controller.loadFile);
    $('#prev').on('click', controller.backwards);
    $('#next').on('click', controller.forwards);
+   $('#default').on('click', controller.loadDefault);
 });
