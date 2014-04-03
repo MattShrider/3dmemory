@@ -1,0 +1,127 @@
+#free{
+   width: 4em;
+   background: #111111;
+   position: relative;
+   top: 3em;
+   right: 2em;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   text-align: center;
+   padding: 0 0 .3em 0 ;
+   padding-bottom:.3em;
+}
+
+#free li{
+   text-align: center;
+   margin: .4em 0 0 0;
+   width: 4em;
+   height: 3.4em;
+   background: #ABCDEF;
+   line-height: 3.5em;
+}
+
+.boldcenter {
+   font-weight: bold;
+}
+
+#freehead {
+   position: absolute;
+   top: -2.5em;
+   right: .1em;
+   font-weight: bold;
+}
+
+ul {
+   list-style-type: none;
+}
+
+#memory li{
+   background: #abcdef;
+   height: 3.2em;
+   margin-top: 5px;
+   padding: 0 0 10px 10px;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.fnum {
+   position: relative;
+   left: -4.7em;
+   top: 1.5em;
+   font-weight: bold;
+   font-size: 14pt;
+}
+
+.address {
+   position: relative;
+   display: inline-block;
+   left: -3.5em;
+   top: 3em;
+   background: #efefef;
+   width: 4em;
+   height: 1em;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   text-align: right;
+}
+
+.block{
+   background: #ababfe;
+   margin-top: 5px;
+   padding: 5px 5px 5px 5px;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+
+}
+
+.center{
+   text-align: center;
+   width: 100%;
+   display: block;
+   font-weight: bold;
+}
+
+.pagecontainer{
+
+}
+
+.header{
+
+   font-weight:bold;
+}
+
+.text{
+   background: #FEEBE1;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   padding: 3px;
+   margin-top: 3px;
+}
+
+.data{
+   margin-top: 5px;
+   background: #E1FEFC;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   padding: 3px;
+
+}
+
+.pageframe{
+   float: right;
+}
+
+
+body {
+   font-size: 16px;
+}
+
+.left{
+   float: left;
+   width: 30%;
+}
+
+.right{
+   float: right;
+   width: 40%;
+}
+
+#controll {
+   width: 100%;
+   background: grey;
+   
+}
