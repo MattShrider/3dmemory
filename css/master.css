@@ -1,25 +1,33 @@
 #free{
    width: 4em;
-   //height: 30em;
-   background: #B7318D;
+   background: #111111;
    position: relative;
    top: 3em;
    right: 2em;
    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
    text-align: center;
-   //padding-top: 2.5em;
+   padding: 0 0 .3em 0 ;
    padding-bottom:.3em;
 }
 
 #free li{
-   position: relative;
-   right: 1.9em;
    text-align: center;
-   margin-top: .4em;
-   width: 5.2em;
+   margin: .4em 0 0 0;
+   width: 4em;
    height: 3.4em;
-   background: #D4C24D;
-   pos
+   background: #ABCDEF;
+   line-height: 3.5em;
+}
+
+.boldcenter {
+   font-weight: bold;
+}
+
+#freehead {
+   position: absolute;
+   top: -2.5em;
+   right: .1em;
+   font-weight: bold;
 }
 
 ul {
@@ -28,24 +36,30 @@ ul {
 
 #memory li{
    background: #abcdef;
-   height: 3em;
+   height: 3.2em;
    margin-top: 5px;
-   padding: 10px; 5px; 5px; 5px;
+   padding: 0 0 10px 10px;
    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.fnum {
+   position: relative;
+   left: -4.7em;
+   top: 1.5em;
+   font-weight: bold;
+   font-size: 14pt;
 }
 
 .address {
    position: relative;
    display: inline-block;
-   vertical-align: top;
-   left: -8em;
+   left: -3.5em;
    top: 3em;
    background: #efefef;
    width: 4em;
    height: 1em;
    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
    text-align: right;
-   //float: left;
 }
 
 .block{
@@ -60,6 +74,35 @@ ul {
    text-align: center;
    width: 100%;
    display: block;
+   font-weight: bold;
+}
+
+.pagecontainer{
+
+}
+
+.header{
+
+   font-weight:bold;
+}
+
+.text{
+   background: #FEEBE1;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   padding: 3px;
+   margin-top: 3px;
+}
+
+.data{
+   margin-top: 5px;
+   background: #E1FEFC;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   padding: 3px;
+
+}
+
+.pageframe{
+   float: right;
 }
 
 

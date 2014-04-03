@@ -43,19 +43,24 @@ var model = {
       if (model.freeFrames.length >= (p.textpages + p.datapages)){
          model.procs.push(p);
          console.log("Add>> pushed to model.procs ID: " + p.id);
+         /* Proc callback for view (breaks strict MVC) */
 
          for (var i=0; i < p.pageTable.length; i++){
             var page = p.pageTable[i];
             var frame = model.freeFrames.shift();
-
+            /* Tell view that frames were moved */
+            //view.unFreeFrame(frame, page, p);
             /* Add the frame to the page */
             page.frame = frame;
             /* Add the page to memory */
             model.memory.frames[frame] = page;
             console.log("Add>frame>> pushed page to frame: " + frame);
          }
+
+         view.addProc(p);
       } else {
          alert("Couldn't create a new proc as there weren't enough free frames");
+         p=null;
       }
       return p;
    },
@@ -78,6 +83,10 @@ var model = {
 
                /* Add the frame back to the free frames */
                model.freeFrames.unshift(frame);
+               /* Tell view to free frames */
+               view.freeFrame(frame);
+               view.removeProc(p);
+
                /* Remove the page from memory */
                model.memory.frames[frame] = null;
                console.log("Rem>>frame>> removed page from frame: " + frame);

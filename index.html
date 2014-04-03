@@ -2,6 +2,7 @@
    <head>
       <title>3D Memory Visualizer</title>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="js/jstween-1.1.min.js" type="text/javascript" charset="utf-8"></script>
       <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" charset="utf-8" />
    </head>
    <body>
@@ -12,59 +13,45 @@
             <button id="prev" >Backwards</button>
             <button id="next" >Forwards</button>
          </div>
+         <div id="progress"></div>
          <div id="scene">
             <ul id="procs" class="left">
-               <li class="block">
-                  <span class="center">Proc ID: 1</span>
-                  <span class="header">Pages:</span>
-                  <div class="text">
-                     <ul>
-                        <li>1 text Frame: 0</li>
-                        <li>2 text Frame: 1</li>
-                        <li>3 text Frame: 2</li>
-                     </ul>
-                  </div>
-                  <div class="data">
-                     <ul>
-                        <li>5 | data | Frame: 4</li>
-                     </ul>
-                  </div>
-               </li>
             </ul>
             <ul id="memory" class="right">
-               <li><span id="f7">Frame: 7</span><div class="address">3584</div>
+               <li id="f7"><div class="address">3584</div><span class="fnum">7</span>
                </li>
-               <li><span id="f6">Frame: 6</span><div class="address">3072</div>
+               <li id="f6"><div class="address">3072</div><span class="fnum">6</span>
                </li>
-               <li><span id="f5">Frame: 5</span><div class="address">2560</div>
+               <li id="f5"><div class="address">2560</div><span class="fnum">5</span>
                </li>
-               <li><span id="f4">Frame: 4</span><div class="address">2048</div>
+               <li id="f4"><div class="address">2048</div><span class="fnum">4</span>
                </li>
-               <li><span id="f3">Frame: 3</span><div class="address">1566</div>
+               <li id="f3"><div class="address">1566</div><span class="fnum">3</span>
                </li>
-               <li><span id="f2">Frame: 2</span><div class="address">1024</div>
+               <li id="f2"><div class="address">1024</div><span class="fnum">2</span>
                </li>
-               <li><span id="f1">Frame: 1</span><div class="address">0512</div>
+               <li id="f1"><div class="address">0512</div><span class="fnum">1</span>
                </li>
-               <li><span id="f0">Frame: 0</span><div class="address">0000</div>
+               <li id="f0"><div class="address">0000</div><span class="fnum">0</span>
                </li>
             </ul>
             <ul id="free" class="right">
-               <li id="free0">
+               <span id="freehead">FREE FRAMES</span>
+               <li id="free0"<span class="boldcenter">0</span>
                </li>
-               <li id="free1">
+               <li id="free1"<span class="boldcenter">1</span>
                </li>
-               <li id="free2">
+               <li id="free2"<span class="boldcenter">2</span>
                </li>
-               <li id="free3">
+               <li id="free3"<span class="boldcenter">3</span>
                </li>
-               <li id="free4">
+               <li id="free4"<span class="boldcenter">4</span>
                </li>
-               <li id="free5">
+               <li id="free5"<span class="boldcenter">5</span>
                </li>
-               <li id="free6">
+               <li id="free6"<span class="boldcenter">6</span>
                </li>
-               <li id="free7">
+               <li id="free7"<span class="boldcenter">7</span>
                </li>
             </ul>
          </div>
