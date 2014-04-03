@@ -1,5 +1,80 @@
-body {
+#free{
+   width: 4em;
+   //height: 30em;
+   background: #B7318D;
+   position: relative;
+   top: 3em;
+   right: 2em;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   text-align: center;
+   //padding-top: 2.5em;
+   padding-bottom:.3em;
+}
 
+#free li{
+   position: relative;
+   right: 1.9em;
+   text-align: center;
+   margin-top: .4em;
+   width: 5.2em;
+   height: 3.4em;
+   background: #D4C24D;
+   pos
+}
+
+ul {
+   list-style-type: none;
+}
+
+#memory li{
+   background: #abcdef;
+   height: 3em;
+   margin-top: 5px;
+   padding: 10px; 5px; 5px; 5px;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.address {
+   position: relative;
+   display: inline-block;
+   vertical-align: top;
+   left: -8em;
+   top: 3em;
+   background: #efefef;
+   width: 4em;
+   height: 1em;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   text-align: right;
+   //float: left;
+}
+
+.block{
+   background: #ababfe;
+   margin-top: 5px;
+   padding: 5px 5px 5px 5px;
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+
+}
+
+.center{
+   text-align: center;
+   width: 100%;
+   display: block;
+}
+
+
+body {
+   font-size: 16px;
+}
+
+.left{
+   float: left;
+   width: 30%;
+}
+
+.right{
+   float: right;
+   width: 40%;
 }
 
 #controll {

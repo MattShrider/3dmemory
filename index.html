@@ -1,10 +1,10 @@
 <html>
    <head>
       <title>3D Memory Visualizer</title>
-      <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" charset="utf-8" />
    </head>
    <body>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
       <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
       <div id="container">
          <div id="controll">
@@ -13,8 +13,60 @@
             <button id="next" >Forwards</button>
          </div>
          <div id="scene">
-            <div id="procs"></div>
-            <div id="memory"></div>
+            <ul id="procs" class="left">
+               <li class="block">
+                  <span class="center">Proc ID: 1</span>
+                  <span class="header">Pages:</span>
+                  <div class="text">
+                     <ul>
+                        <li>1 text Frame: 0</li>
+                        <li>2 text Frame: 1</li>
+                        <li>3 text Frame: 2</li>
+                     </ul>
+                  </div>
+                  <div class="data">
+                     <ul>
+                        <li>5 | data | Frame: 4</li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+            <ul id="memory" class="right">
+               <li><span id="f7">Frame: 7</span><div class="address">3584</div>
+               </li>
+               <li><span id="f6">Frame: 6</span><div class="address">3072</div>
+               </li>
+               <li><span id="f5">Frame: 5</span><div class="address">2560</div>
+               </li>
+               <li><span id="f4">Frame: 4</span><div class="address">2048</div>
+               </li>
+               <li><span id="f3">Frame: 3</span><div class="address">1566</div>
+               </li>
+               <li><span id="f2">Frame: 2</span><div class="address">1024</div>
+               </li>
+               <li><span id="f1">Frame: 1</span><div class="address">0512</div>
+               </li>
+               <li><span id="f0">Frame: 0</span><div class="address">0000</div>
+               </li>
+            </ul>
+            <ul id="free" class="right">
+               <li id="free0">
+               </li>
+               <li id="free1">
+               </li>
+               <li id="free2">
+               </li>
+               <li id="free3">
+               </li>
+               <li id="free4">
+               </li>
+               <li id="free5">
+               </li>
+               <li id="free6">
+               </li>
+               <li id="free7">
+               </li>
+            </ul>
          </div>
       </div>
       <script src="js/model.js"></script>
