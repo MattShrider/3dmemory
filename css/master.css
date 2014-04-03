@@ -42,6 +42,22 @@ ul {
    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
+#memhead {
+   position: relative;
+   text-align: center;
+   width: 100%;
+   top: 0;
+   font-weight: bold;
+}
+
+#prochead {
+   position: relative;
+   text-align: center;
+   width: 100%;
+   top: 0;
+   font-weight: bold;
+}
+
 .fnum {
    position: relative;
    left: -4.7em;
@@ -93,11 +109,22 @@ ul {
    margin-top: 3px;
 }
 
+
 .data{
    margin-top: 5px;
    background: #E1FEFC;
    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
    padding: 3px;
+
+}
+
+.memtext{
+   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+   padding: 3px;
+   padding-left: .1em;
+   margin-left: 4em;
+   margin-top: -.1em;
+   width: 15em;
 
 }
 
@@ -124,4 +151,8 @@ body {
    width: 100%;
    background: grey;
    
+}
+
+#container{
+   overflow: hidden;
 }
