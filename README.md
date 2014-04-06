@@ -1,4 +1,6 @@
-3dmemory
+memorysim
 ========
-[Check out the live site](http://mattshrider.github.io/3dmemory/)  
-A WebGL simulation of linux memory paging and physical vs logical memory.  For GVSU OS class.
+[Check out the live site](http://mattshrider.github.io/memorysim/)  
+A simulation of linux paging and physical memory.  This project is for a 
+ Grand Valley State University OS course, and should use MVC design.  This project
+ will most likely be un-updated until I get free time after graduation.
